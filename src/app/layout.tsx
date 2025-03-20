@@ -4,7 +4,7 @@ import "./globals.css"
 import { Providers } from "./providers"
 
 export const metadata: Metadata = {
-  title: "Overview",
+  title: "StatLog",
   description: "Dashboard pages to summarize data.",
 }
 
