@@ -45,53 +45,52 @@ export default function SupportDashboard() {
           <dd className="mt-1 text-3xl font-semibold text-gray-900 dark:text-gray-50">
             247
           </dd>
-          <CategoryBar
-            values={[82, 13, 5]}
-            className="mt-6"
-            colors={["blue", "lightGray", "red"]}
-            showLabels={false}
-          />
-          <ul
-            role="list"
-            className="mt-4 flex flex-wrap gap-x-10 gap-y-4 text-sm"
-          >
-            <li>
-              <span className="text-base font-semibold text-gray-900 dark:text-gray-50">
-                82%
-              </span>
-              <div className="flex items-center gap-2">
-                <span
-                  className="size-2.5 shrink-0 rounded-sm bg-blue-500 dark:bg-blue-500"
-                  aria-hidden="true"
-                />
-                <span className="text-sm">Resolved</span>
+          <dd>
+            <CategoryBar
+              values={[82, 13, 5]}
+              className="mt-6"
+              colors={["blue", "lightGray", "red"]}
+              showLabels={false}
+            />
+            <div className="mt-4 flex flex-wrap gap-x-10 gap-y-4 text-sm">
+              <div>
+                <span className="text-base font-semibold text-gray-900 dark:text-gray-50">
+                  82%
+                </span>
+                <div className="flex items-center gap-2">
+                  <span
+                    className="size-2.5 shrink-0 rounded-sm bg-blue-500 dark:bg-blue-500"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm">Resolved</span>
+                </div>
               </div>
-            </li>
-            <li>
-              <span className="text-base font-semibold text-gray-900 dark:text-gray-50">
-                13%
-              </span>
-              <div className="flex items-center gap-2">
-                <span
-                  className="size-2.5 shrink-0 rounded-sm bg-gray-400 dark:bg-gray-600"
-                  aria-hidden="true"
-                />
-                <span className="text-sm">In Progress</span>
+              <div>
+                <span className="text-base font-semibold text-gray-900 dark:text-gray-50">
+                  13%
+                </span>
+                <div className="flex items-center gap-2">
+                  <span
+                    className="size-2.5 shrink-0 rounded-sm bg-gray-400 dark:bg-gray-600"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm">In Progress</span>
+                </div>
               </div>
-            </li>
-            <li>
-              <span className="text-base font-semibold text-gray-900 dark:text-gray-50">
-                5%
-              </span>
-              <div className="flex items-center gap-2">
-                <span
-                  className="size-2.5 shrink-0 rounded-sm bg-red-500 dark:bg-red-500"
-                  aria-hidden="true"
-                />
-                <span className="text-sm">Escalated</span>
+              <div>
+                <span className="text-base font-semibold text-gray-900 dark:text-gray-50">
+                  5%
+                </span>
+                <div className="flex items-center gap-2">
+                  <span
+                    className="size-2.5 shrink-0 rounded-sm bg-red-500 dark:bg-red-500"
+                    aria-hidden="true"
+                  />
+                  <span className="text-sm">Escalated</span>
+                </div>
               </div>
-            </li>
-          </ul>
+            </div>
+          </dd>
         </Card>
         <Card>
           <dt className="text-sm font-medium text-gray-900 dark:text-gray-50">

@@ -206,8 +206,7 @@ const CohortDetailsDialog = ({
                       </div>
                       <div className="mt-1 h-2 rounded bg-gray-200 dark:bg-gray-700">
                         <div
-                          className="h-full rounded bg-blue-500"
-                          style={{ width: `${issue.resolution_rate * 100}%` }}
+                          className={`h-full rounded bg-blue-500 w-[${issue.resolution_rate * 100}%]`}
                         />
                       </div>
                       <div className="mt-1 text-sm text-gray-600 dark:text-gray-400">
@@ -389,150 +388,45 @@ export default function CohortRetention() {
             </p>
             <dl className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-3">
               {/* Left Column */}
-              <div className="space-y-6">
-                <div>
-                  <dt className="text-sm text-gray-500 dark:text-gray-500">
-                    Total Users
-                  </dt>
-                  <dd className="mt-1 flex items-baseline">
-                    <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
-                      {cohortsAggregate.totalUsers.toLocaleString()}
-                    </span>
-                    <span className="ml-2 text-sm text-emerald-600 dark:text-emerald-500">
-                      +17%
-                    </span>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-gray-500 dark:text-gray-500">
-                    Average CSAT Score
-                  </dt>
-                  <dd className="mt-1 flex items-baseline">
-                    <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
-                      {cohortsAggregate.aggregateMetrics.satisfaction.avgCsatScore.toFixed(
-                        1,
-                      )}
-                    </span>
-                    <span className="ml-2 text-sm text-emerald-600 dark:text-emerald-500">
-                      +6%
-                    </span>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-gray-500 dark:text-gray-500">
-                    Average Response Time
-                  </dt>
-                  <dd className="mt-1 flex items-baseline">
-                    <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
-                      {cohortsAggregate.aggregateMetrics.performance.avgResponseTimeMinutes.toFixed(
-                        1,
-                      )}
-                      m
-                    </span>
-                    <span className="ml-2 text-sm text-emerald-600 dark:text-emerald-500">
-                      +12%
-                    </span>
-                  </dd>
-                </div>
+              <div>
+                <dt className="text-sm text-gray-500 dark:text-gray-500">
+                  Total Users
+                </dt>
+                <dd className="mt-1 flex items-baseline">
+                  <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
+                    {cohortsAggregate.totalUsers.toLocaleString()}
+                  </span>
+                  <span className="ml-2 text-sm text-emerald-600 dark:text-emerald-500">
+                    +17%
+                  </span>
+                </dd>
               </div>
-
-              {/* Middle Column */}
-              <div className="space-y-6">
-                <div>
-                  <dt className="text-sm text-gray-500 dark:text-gray-500">
-                    Total Tickets
-                  </dt>
-                  <dd className="mt-1 flex items-baseline">
-                    <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
-                      {cohortsAggregate.aggregateMetrics.activity.totalTicketsCreated.toLocaleString()}
-                    </span>
-                    <span className="ml-2 text-sm text-emerald-600 dark:text-emerald-500">
-                      +11%
-                    </span>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-gray-500 dark:text-gray-500">
-                    Resolution Rate
-                  </dt>
-                  <dd className="mt-1 flex items-baseline">
-                    <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
-                      {(
-                        cohortsAggregate.aggregateMetrics.activity
-                          .ticketResolutionRate * 100
-                      ).toFixed(1)}
-                      %
-                    </span>
-                    <span className="ml-2 text-sm text-emerald-600 dark:text-emerald-500">
-                      +2%
-                    </span>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-gray-500 dark:text-gray-500">
-                    Total Cohorts
-                  </dt>
-                  <dd className="mt-1 flex items-baseline">
-                    <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
-                      {cohortsAggregate.totalCohorts}
-                    </span>
-                    <span className="ml-2 text-sm text-emerald-600 dark:text-emerald-500">
-                      +5%
-                    </span>
-                  </dd>
-                </div>
+              <div>
+                <dt className="text-sm text-gray-500 dark:text-gray-500">
+                  Average CSAT Score
+                </dt>
+                <dd className="mt-1 flex items-baseline">
+                  <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
+                    {cohortsAggregate.aggregateMetrics.satisfaction.avgCsatScore.toFixed(1)}
+                  </span>
+                  <span className="ml-2 text-sm text-emerald-600 dark:text-emerald-500">
+                    +6%
+                  </span>
+                </dd>
               </div>
-              {/* Right Column */}
-              <div className="space-y-6">
-                <div>
-                  <dt className="text-sm text-gray-500 dark:text-gray-500">
-                    Avg. Handling Time
-                  </dt>
-                  <dd className="mt-1 flex items-baseline">
-                    <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
-                      {cohortsAggregate.aggregateMetrics.performance.avgHandlingTimeMinutes.toFixed(
-                        1,
-                      )}
-                      m
-                    </span>
-                    <span className="ml-2 text-sm text-emerald-600 dark:text-emerald-500">
-                      +21%
-                    </span>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-gray-500 dark:text-gray-500">
-                    First Contact Resolution
-                  </dt>
-                  <dd className="mt-1 flex items-baseline">
-                    <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
-                      {(
-                        cohortsAggregate.aggregateMetrics.performance
-                          .avgFirstContactResolutionRate * 100
-                      ).toFixed(1)}
-                      %
-                    </span>
-                    <span className="ml-2 text-sm text-emerald-600 dark:text-emerald-500">
-                      +3%
-                    </span>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm text-gray-500 dark:text-gray-500">
-                    Retention Rate
-                  </dt>
-                  <dd className="mt-1 flex items-baseline">
-                    <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
-                      {cohortsAggregate.aggregateMetrics.retention.overallRetentionRate.toFixed(
-                        1,
-                      )}
-                      %
-                    </span>
-                    <span className="ml-2 text-sm text-emerald-600 dark:text-emerald-500">
-                      +2%
-                    </span>
-                  </dd>
-                </div>
+              <div>
+                <dt className="text-sm text-gray-500 dark:text-gray-500">
+                  Average Response Time
+                </dt>
+                <dd className="mt-1 flex items-baseline">
+                  <span className="text-2xl font-semibold text-gray-900 dark:text-gray-50">
+                    {cohortsAggregate.aggregateMetrics.performance.avgResponseTimeMinutes.toFixed(1)}
+                    m
+                  </span>
+                  <span className="ml-2 text-sm text-emerald-600 dark:text-emerald-500">
+                    +12%
+                  </span>
+                </dd>
               </div>
             </dl>
           </Card>
