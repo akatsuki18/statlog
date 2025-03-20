@@ -1,8 +1,27 @@
-import { RiContrast2Line, RiGoogleFill } from "@remixicon/react"
+'use client'
 
 import { Button } from "@/components/Button"
+import { supabase } from "@/lib/supabase"
+import { RiContrast2Line, RiGoogleFill } from "@remixicon/react"
 
 export default function Example() {
+  const handleGoogleSignIn = async () => {
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`
+        }
+      })
+
+      if (error) {
+        throw error
+      }
+    } catch (error) {
+      console.error('Error signing in with Google:', error)
+    }
+  }
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-4 py-28 lg:px-6">
       <div className="relative sm:mx-auto sm:w-full sm:max-w-sm">
@@ -42,11 +61,11 @@ export default function Example() {
           Sign in to Overview
         </h2>
         <div className="mt-10">
-          <Button asChild className="mt-4 w-full">
-            <a href="#" className="inline-flex items-center gap-2">
+          <Button onClick={handleGoogleSignIn} className="mt-4 w-full">
+            <span className="inline-flex items-center gap-2">
               <RiGoogleFill className="size-5" aria-hidden={true} />
               Continue with Google
-            </a>
+            </span>
           </Button>
         </div>
         <Button type="button" variant="secondary" className="mt-4 w-full">
