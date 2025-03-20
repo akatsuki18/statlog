@@ -8,12 +8,8 @@ export default function LoginPage() {
  <div className="flex min-h-screen flex-col items-center justify-center px-4 py-28 lg:px-6">
   <div className="relative sm:mx-auto sm:w-full sm:max-w-sm">
     <div
-      className="pointer-events-none absolute -top-[25%] left-1/2 -translate-x-1/2 select-none opacity-60 dark:opacity-90"
+      className="pointer-events-none absolute -top-[25%] left-1/2 -translate-x-1/2 select-none opacity-60 dark:opacity-90 [mask-image:radial-gradient(rgba(0,0,0,1)_0%,transparent_80%)] [-webkit-mask-image:radial-gradient(rgba(0,0,0,1)_0%,transparent_80%)]"
       aria-hidden="true"
-      style={{
-        maskImage: "radial-gradient(rgba(0, 0, 0, 1) 0%, transparent 80%)",
-        WebkitMaskImage: "radial-gradient(rgba(0, 0, 0, 1) 0%, transparent 80%)"
-      }}
     >
       <div className="flex flex-col gap-1">
         {[...Array(10)].map((_, i) => (
@@ -46,7 +42,7 @@ export default function LoginPage() {
       <a
         href="#"
         onClick={() => signIn("google", { callbackUrl: "/" })}
-        className="relative inline-flex items-center justify-center whitespace-nowrap rounded-md border px-3 py-2 text-center text-sm font-medium shadow-sm transition-all duration-100 ease-in-out disabled:pointer-events-none disabled:shadow-none outline outline-offset-2 outline-0 focus-visible:outline-2 outline-blue-500 dark:outline-blue-500 border-transparent text-white dark:text-white bg-blue-500 dark:bg-blue-500 hover:bg-blue-600 dark:hover:bg-blue-600 disabled:bg-blue-300 disabled:text-white disabled:dark:bg-blue-800 disabled:dark:text-blue-400 mt-4 w-full inline-flex items-center gap-2"
+        className="relative inline-flex justify-center whitespace-nowrap rounded-md border px-3 py-2 text-center text-sm font-medium shadow-sm transition-all duration-100 ease-in-out disabled:pointer-events-none disabled:shadow-none outline outline-offset-2 outline-0 focus-visible:outline-2 outline-blue-500 dark:outline-blue-500 border-transparent text-white dark:text-white bg-blue-500 dark:bg-blue-500 hover:bg-blue-600 dark:hover:bg-blue-600 disabled:bg-blue-300 disabled:text-white disabled:dark:bg-blue-800 disabled:dark:text-blue-400 mt-4 w-full items-center gap-2"
       >
         <RiGoogleFill className="size-5" />
         Continue with Google
