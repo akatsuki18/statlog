@@ -1,7 +1,7 @@
 import { GeistSans } from "geist/font/sans"
 import type { Metadata } from "next"
-import { ThemeProvider } from "next-themes"
 import "./globals.css"
+import { Providers } from "./providers"
 
 export const metadata: Metadata = {
   title: "Overview",
@@ -18,13 +18,7 @@ export default function RootLayout({
       <body
         className={`${GeistSans.className} min-h-full bg-white antialiased dark:bg-gray-950`}
       >
-        <ThemeProvider
-          defaultTheme="system"
-          disableTransitionOnChange
-          attribute="class"
-        >
-          {children}
-        </ThemeProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

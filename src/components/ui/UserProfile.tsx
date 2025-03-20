@@ -1,6 +1,5 @@
 "use client"
 
-import { siteConfig } from "@/app/siteConfig"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,12 +21,15 @@ import {
   RiMoonLine,
   RiSunLine,
 } from "@remixicon/react"
+import { signOut, useSession } from "next-auth/react"
 import { useTheme } from "next-themes"
 import React from "react"
 
 function DropdownUserProfile() {
   const [mounted, setMounted] = React.useState(false)
   const { theme, setTheme } = useTheme()
+  const { data: session } = useSession()
+
   React.useEffect(() => {
     setMounted(true)
   }, [])
@@ -35,6 +37,17 @@ function DropdownUserProfile() {
   if (!mounted) {
     return null
   }
+
+  // Get user initials from name
+  const getUserInitials = (name: string | null | undefined) => {
+    if (!name) return ""
+    return name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .toUpperCase()
+  }
+
   return (
     <>
       <DropdownMenu>
@@ -50,7 +63,15 @@ function DropdownUserProfile() {
               className="flex size-8 shrink-0 items-center justify-center rounded-full border border-gray-300 bg-white text-xs font-medium text-gray-700 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300"
               aria-hidden="true"
             >
-              ES
+              {session?.user?.image ? (
+                <img
+                  src={session.user.image}
+                  alt={session.user.name || ""}
+                  className="size-full rounded-full object-cover"
+                />
+              ) : (
+                getUserInitials(session?.user?.name)
+              )}
             </span>
           </button>
         </DropdownMenuTrigger>
@@ -58,7 +79,7 @@ function DropdownUserProfile() {
           align="end"
           className="!min-w-[calc(var(--radix-dropdown-menu-trigger-width))]"
         >
-          <DropdownMenuLabel>emma.stone@acme.com</DropdownMenuLabel>
+          <DropdownMenuLabel>{session?.user?.email}</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuSubMenu>
               <DropdownMenuSubMenuTrigger>Theme</DropdownMenuSubMenuTrigger>
@@ -129,10 +150,8 @@ function DropdownUserProfile() {
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
-              <a href={siteConfig.baseLinks.login} className="w-full">
-                Sign out
-              </a>
+            <DropdownMenuItem onSelect={() => signOut()}>
+              Sign out
             </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
